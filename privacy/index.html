@@ -1,1 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — IdeaJar</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --border: #e8e6e1;
+      --text: #1a1916;
+      --text-secondary: #6b6860;
+      --accent: #2d5a3d;
+      --accent-light: #eef5f1;
+      --radius: 10px;
+      --max-width: 760px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111110;
+        --surface: #1c1c1a;
+        --border: #2e2e2b;
+        --text: #f0ede8;
+        --text-secondary: #8a8880;
+        --accent: #5a9e72;
+        --accent-light: #1a2e22;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      padding: 0 20px 80px;
+    }
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      margin: 48px 0 14px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 28px 0 8px;
+      color: var(--text);
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+
+    .callout p {
+      color: var(--text);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0 28px;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    td:first-child { color: var(--text); font-weight: 500; }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-no   { background: #f0f0ee; color: #888; }
+    .badge-yes  { background: var(--accent-light); color: var(--accent); }
+
+    @media (prefers-color-scheme: dark) {
+      .badge-no { background: #2a2a28; color: #666; }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    footer {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <p class="app-label">IdeaJar</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: April 26, 2026 &nbsp;·&nbsp; Last updated: April 26, 2026</p>
+  </header>
+
+  <div class="callout">
+    <p>IdeaJar is built on a simple principle: your ideas belong to you. This policy explains exactly what data the app collects, why, and where it goes — in plain language.</p>
+  </div>
+
+  <h2>1. Who We Are</h2>
+  <p>IdeaJar is developed and operated by <strong>[YOUR NAME / COMPANY NAME]</strong>. If you have any questions about this policy, you can reach us at <a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a>.</p>
+
+  <!-- ─── WHAT WE COLLECT ─── -->
+  <h2>2. What We Collect and Why</h2>
+
+  <h3>Your Captures (User Content)</h3>
+  <p>When you use IdeaJar, you create captures — voice notes, typed thoughts, photos, and file attachments. This is the core content of the app. It is stored on your device and, if you have iCloud enabled, synced to your private iCloud account via Apple's CloudKit service.</p>
+
+  <p>To power features like classification, theme synthesis, and digest generation, the text content of your captures (including transcripts of voice notes) and image data from photo captures is sent to AI language models for processing. See Section 3 for details on how this works.</p>
+
+  <h3>Voice and Audio</h3>
+  <p><strong>Your raw audio never leaves your device.</strong> Voice recordings are transcribed entirely on-device using WhisperKit (a local Whisper model) or Apple's on-device speech recognition. The resulting text transcript — not the audio file — is what gets processed by AI features. The audio file itself is stored locally and synced to your private iCloud account.</p>
+
+  <h3>Location</h3>
+  <p>If you grant location permission, IdeaJar tags your captures with your approximate location (venue name and coordinates, at ~100-meter accuracy). This is used to:</p>
+  <ul>
+    <li>Label where an idea was captured</li>
+    <li>Set up geofence reminders that surface relevant captures when you return to a location</li>
+    <li>Help the AI suggest the best nearby venue for a task-related capture (e.g., the nearest grocery store for a shopping item)</li>
+  </ul>
+  <p>Location data is stored with your captures in iCloud and may be included in content sent to AI services when resolving a location-specific task. You can deny location permission at any time in iOS Settings and all other app features will continue to work.</p>
+
+  <h3>Photos and Images</h3>
+  <p>Photos you capture or import are stored in your private iCloud account. When you request AI analysis of an image (e.g., to extract text from a whiteboard photo), the image is sent to an AI model for processing. The app generates and stores a small thumbnail locally to avoid re-sending the full image unnecessarily.</p>
+
+  <h3>Purchase History</h3>
+  <p>If you purchase the Boost Pack in-app purchase, the app validates your transaction via Apple's StoreKit. The app receives confirmation that the purchase was made in order to credit your token budget. No payment card or financial information is ever accessed by IdeaJar — Apple handles all payment processing.</p>
+
+  <h3>Analytics</h3>
+  <p>IdeaJar uses Mixpanel to collect anonymous usage analytics. This helps us understand which features are used and how to improve the app. Analytics events include things like: app opened, capture created, digest generated, theme incubated, tab viewed.</p>
+  <p>Each device is assigned a randomly generated identifier (a UUID created at first launch) for analytics purposes. This identifier is not tied to your Apple ID, name, email, or any other personal information. It is regenerated if you uninstall and reinstall the app.</p>
+  <p><strong>No personally identifiable information is included in any analytics event.</strong></p>
+
+  <h3>Token Usage</h3>
+  <p>IdeaJar tracks how many AI tokens your account uses each day (by model) so you can monitor your usage and costs. This data is stored locally and synced across your devices via iCloud Key-Value Store. It is not shared with any third party.</p>
+
+  <!-- ─── HOW AI PROCESSING WORKS ─── -->
+  <h2>3. How AI Processing Works</h2>
+
+  <p>IdeaJar uses large language models to classify your captures, generate themes, and create digests. To protect your API credentials, all AI requests are routed through a secure proxy server operated by us before being forwarded to the AI provider.</p>
+
+  <p>The following third-party AI providers may process your content:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>What's Sent</th>
+        <th>Used For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anthropic (Claude)</td>
+        <td>Text transcripts, image data, file contents, location context</td>
+        <td>Classification, theme synthesis, digest generation, image analysis, suggested actions</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td>Text transcripts, image data, file contents, location context</td>
+        <td>Fallback classification, theme synthesis, semantic embeddings for theme grouping</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Data sent to these providers is used solely to generate a response for the feature you triggered. Anthropic and OpenAI's use of data submitted via their APIs is governed by their respective privacy policies and API usage policies. Neither provider uses API-submitted data to train their models by default.</p>
+
+  <p>All data in transit to and from these providers is encrypted via HTTPS (TLS).</p>
+
+  <!-- ─── APPLE SERVICES ─── -->
+  <h2>4. Apple Services</h2>
+  <p>IdeaJar also uses the following Apple platform services:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Purpose</th>
+        <th>Data Involved</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CloudKit (iCloud)</td>
+        <td>Syncing your captures and themes across your devices</td>
+        <td>All user content, location, themes, digests, token usage</td>
+      </tr>
+      <tr>
+        <td>WeatherKit</td>
+        <td>Attaching weather context to captures at the moment of creation</td>
+        <td>Your location coordinates at capture time</td>
+      </tr>
+      <tr>
+        <td>MapKit / Core Location</td>
+        <td>Reverse geocoding coordinates into a readable venue name</td>
+        <td>Your location coordinates; processed on-device</td>
+      </tr>
+      <tr>
+        <td>EventKit</td>
+        <td>Creating reminders and calendar events from captures (user-initiated)</td>
+        <td>Capture title and details, written to your local Calendar/Reminders</td>
+      </tr>
+      <tr>
+        <td>StoreKit</td>
+        <td>Processing in-app purchases</td>
+        <td>Purchase transaction receipt</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>These services are governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. iCloud data is stored in your personal, private iCloud account — we cannot access it.</p>
+
+  <!-- ─── WHAT WE DON'T DO ─── -->
+  <h2>5. What We Don't Do</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Practice</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sell your data to third parties</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Use your data for advertising</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Track you across other apps or websites</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Send raw audio to any external server</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Collect your name, email, or contact info</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Require account creation</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Include advertising SDKs or ad networks</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+      <tr>
+        <td>Use crash or performance monitoring SDKs</td>
+        <td><span class="badge badge-no">Never</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─── DATA STORAGE ─── -->
+  <h2>6. Where Your Data Lives</h2>
+
+  <p>Your captures, themes, and digests are stored in two places:</p>
+  <ul>
+    <li><strong>On your device</strong> — in an encrypted local database managed by iOS.</li>
+    <li><strong>In your iCloud account</strong> — synced via CloudKit's private database, which means only you (and Apple, as the service operator) can access it. We cannot read your iCloud data.</li>
+  </ul>
+
+  <p>You can disable iCloud sync for IdeaJar at any time in <strong>iOS Settings → [Your Name] → iCloud → IdeaJar</strong>. If you do, your data remains on-device only.</p>
+
+  <!-- ─── YOUR RIGHTS ─── -->
+  <h2>7. Your Rights and Controls</h2>
+
+  <h3>Deleting Your Data</h3>
+  <p>You can delete any capture inside the app. Deleted captures are held in the Trash for 30 days (so you can recover them) and then permanently deleted from both your device and iCloud. To delete your data immediately, empty the Trash manually or delete the app — deleting IdeaJar from your device also removes all local data. To remove iCloud data, go to <strong>iOS Settings → [Your Name] → iCloud → Manage Account Storage → IdeaJar → Delete Data</strong>.</p>
+
+  <h3>Location Permission</h3>
+  <p>You can revoke location access at any time in <strong>iOS Settings → Privacy & Security → Location Services → IdeaJar</strong>. Revoking location access disables geofence reminders and venue tagging but does not affect any other feature.</p>
+
+  <h3>Microphone and Camera Permission</h3>
+  <p>You can revoke microphone or camera access at any time in <strong>iOS Settings → Privacy & Security</strong>. Voice and photo capture will be unavailable, but text and file capture will continue to work.</p>
+
+  <h3>Opting Out of Analytics</h3>
+  <p>Analytics are collected by default to help improve the app. If you would like to opt out, please contact us at <a href="mailto:albert.c.lee@gmail.com">albert.c.lee@gmail.com</a> with your device's randomly generated analytics ID (visible in Settings → Usage within the app) and we will suppress future events from that identifier.</p>
+
+  <!-- ─── CHILDREN ─── -->
+  <h2>8. Children's Privacy</h2>
+  <p>IdeaJar is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If you believe a child under 13 has used the app, please contact us and we will take appropriate steps.</p>
+
+  <!-- ─── CHANGES ─── -->
+  <h2>9. Changes to This Policy</h2>
+  <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page. For significant changes, we may also notify you within the app. Continued use of IdeaJar after a policy update constitutes acceptance of the updated terms.</p>
+
+  <!-- ─── CONTACT ─── -->
+  <h2>10. Contact</h2>
+  <p>If you have questions, concerns, or requests regarding your privacy or this policy, please contact us:</p>
+  <ul>
+    <li><strong>Email:</strong> <a href="mailto:albert.c.lee@gmail.com">albert.c.lee@gmailc.om</a></li>
+    <li><strong>Website:</strong> <a href="http://myideajar.app">http://myideajar.app</a></li>
+  </ul>
+
+  <hr />
+
+  <footer>
+    <p>© 2026 Albert C. Lee. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
 
