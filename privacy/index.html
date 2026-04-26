@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — My IdeaJar</title>
+  <link rel="icon" type="image/png" href="../images/AppIcon.png" />
+  <link rel="apple-touch-icon" href="../images/AppIcon.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -52,12 +54,21 @@
     }
 
     .app-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 12px;
+    }
+    .app-label img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: block;
     }
 
     h1 {
@@ -187,7 +198,7 @@
 <div class="wrapper">
 
   <header>
-    <p class="app-label">My IdeaJar</p>
+    <p class="app-label"><img src="../images/AppIcon.png" alt="" />My IdeaJar</p>
     <h1>Privacy Policy</h1>
     <p class="meta">Effective date: April 26, 2026 &nbsp;·&nbsp; Last updated: April 26, 2026</p>
   </header>

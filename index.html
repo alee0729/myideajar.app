@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My IdeaJar — Capture Everything. Organize Nothing.</title>
   <meta name="description" content="My IdeaJar turns voice notes, photos, text, and shared links into structured insights, daily digests, and suggested actions — automatically." />
+  <link rel="icon" type="image/png" href="images/AppIcon.png" />
+  <link rel="apple-touch-icon" href="images/AppIcon.png" />
+  <meta property="og:title" content="My IdeaJar — Capture Everything. Organize Nothing." />
+  <meta property="og:description" content="An AI-first thought companion for iPhone. Speak, type, snap, or share — My IdeaJar classifies, summarizes, and surfaces what to act on." />
+  <meta property="og:image" content="images/AppIcon.png" />
   <style>
     :root {
       --bg: #0b0f1a;
@@ -95,9 +100,21 @@
       gap: 1rem;
     }
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
       font-weight: 800;
       letter-spacing: -.02em;
       font-size: 1.15rem;
+    }
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      box-shadow: 0 4px 14px rgba(159, 122, 234, .35);
+      display: block;
+    }
+    .logo-text {
       background: linear-gradient(135deg, #b5c7ff, #d2c3ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -307,6 +324,14 @@
       justify-content: space-between;
       gap: 1rem;
     }
+    .cta-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(159, 122, 234, .35);
+      flex-shrink: 0;
+    }
+    .cta-copy { flex: 1 1 280px; }
 
     footer {
       padding: 34px 0 44px;
@@ -338,7 +363,10 @@
 <body>
   <nav>
     <div class="container nav-wrap">
-      <a href="#top" class="logo">My IdeaJar</a>
+      <a href="#top" class="logo">
+        <img class="logo-mark" src="images/AppIcon.png" alt="" />
+        <span class="logo-text">My IdeaJar</span>
+      </a>
       <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
@@ -570,7 +598,8 @@
         </div>
 
         <div class="cta" id="download">
-          <div>
+          <img class="cta-icon" src="images/AppIcon.png" alt="My IdeaJar app icon" />
+          <div class="cta-copy">
             <h3 style="margin-bottom:.35rem;">Ready to think without losing your thoughts?</h3>
             <p>Start with a single capture and let My IdeaJar organize the rest.</p>
           </div>
