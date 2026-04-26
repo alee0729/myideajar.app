@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IdeaJar — Capture Everything. Organize Nothing.</title>
-  <meta name="description" content="IdeaJar turns voice notes, photos, text, and shared links into structured insights, daily digests, and suggested actions — automatically." />
+  <title>My IdeaJar — Capture Everything. Organize Nothing.</title>
+  <meta name="description" content="My IdeaJar turns voice notes, photos, text, and shared links into structured insights, daily digests, and suggested actions — automatically." />
   <style>
     :root {
       --bg: #0b0f1a;
@@ -138,33 +138,14 @@
       color: #b8c7ea;
     }
 
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 1.1rem;
-      background: linear-gradient(180deg, rgba(20, 31, 51, .9), rgba(16, 24, 40, .78));
-      box-shadow: var(--shadow);
+    .phone-shot {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+      border-radius: 32px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 0 1px rgba(109, 140, 255, .15);
     }
-    .capture {
-      border: 1px solid rgba(58, 80, 120, .65);
-      border-radius: 12px;
-      padding: .8rem;
-      margin-bottom: .65rem;
-      background: rgba(12, 19, 33, .7);
-    }
-    .capture b { color: #dde7ff; }
-    .tag {
-      display: inline-block;
-      margin-top: .45rem;
-      font-size: .72rem;
-      padding: .18rem .45rem;
-      border-radius: 6px;
-      font-weight: 700;
-      letter-spacing: .03em;
-    }
-    .todo { background: rgba(53, 211, 153, .18); color: #8ef3ca; }
-    .idea { background: rgba(251, 191, 36, .18); color: #fcd97d; }
-    .theme { background: rgba(109, 140, 255, .2); color: #bfd0ff; }
 
     .quick-stats {
       margin-top: 28px;
@@ -214,6 +195,57 @@
     }
     .card h3 { font-size: 1.05rem; margin-bottom: .4rem; }
     .card p { font-size: .93rem; }
+
+    .step-shot {
+      display: block;
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: .9rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .45);
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.6rem;
+    }
+    .showcase-item {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1rem;
+      background: rgba(16, 24, 40, .7);
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+    .showcase-item img {
+      display: block;
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, .45);
+    }
+    .showcase-item h3 { font-size: 1rem; }
+    .showcase-item p { font-size: .9rem; }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.6rem;
+    }
+    .split.reverse { grid-template-columns: 1.1fr .9fr; }
+    .split img {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    }
+    .split h3 { font-size: 1.3rem; margin-bottom: .6rem; }
+    .split p { font-size: 1rem; }
 
     .use-cases {
       display: grid;
@@ -295,6 +327,8 @@
       .cards { grid-template-columns: 1fr; }
       .feature-grid { grid-template-columns: 1fr; }
       .use-case { grid-template-columns: 1fr; }
+      .showcase { grid-template-columns: 1fr; }
+      .split, .split.reverse { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .nav-links { display: none; }
@@ -304,10 +338,11 @@
 <body>
   <nav>
     <div class="container nav-wrap">
-      <a href="#top" class="logo">IdeaJar</a>
+      <a href="#top" class="logo">My IdeaJar</a>
       <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
         <a href="#use-cases">Use cases</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -322,8 +357,8 @@
           <span class="pill">iPhone app · iOS 17+ · AI-assisted capture</span>
           <h1>Capture every thought.<br />Turn it into action.</h1>
           <p class="sub">
-            IdeaJar is an AI-first thought companion for people who think quickly and capture messily.
-            Speak, type, snap, or share from other apps — then let IdeaJar classify, summarize,
+            My IdeaJar is an AI-first thought companion for people who think quickly and capture messily.
+            Speak, type, snap, or share from other apps — then let My IdeaJar classify, summarize,
             cluster themes, and suggest your next move.
           </p>
           <div class="hero-cta">
@@ -333,23 +368,9 @@
           <p class="hero-proof">No folders to manage. No tagging required. Built for rapid capture.</p>
         </div>
 
-        <aside class="panel" aria-label="IdeaJar product preview">
-          <div class="capture">
-            <b>🎙 Voice capture</b>
-            <p>"Email the design team about location-triggered onboarding reminders."</p>
-            <span class="tag todo">Classified: Email / To-Do</span>
-          </div>
-          <div class="capture">
-            <b>📷 Photo capture</b>
-            <p>Whiteboard sketch imported and summarized into roadmap notes.</p>
-            <span class="tag idea">Classified: Idea</span>
-          </div>
-          <div class="capture">
-            <b>🌱 Theme incubator</b>
-            <p>"Context-aware productivity" now combines 8 related captures.</p>
-            <span class="tag theme">Emerging theme</span>
-          </div>
-        </aside>
+        <div>
+          <img class="phone-shot" src="images/9.png" alt="My IdeaJar home screen showing daily greeting, attention items, and capture categories" />
+        </div>
       </div>
 
       <div class="container quick-stats" role="list" aria-label="Key product stats">
@@ -377,19 +398,22 @@
         <div class="section-head">
           <span class="pill">How it works</span>
           <h2>From scattered captures to structured thinking</h2>
-          <p>IdeaJar is designed around one job: convert messy daily input into decisions you can act on.</p>
+          <p>My IdeaJar is designed around one job: convert messy daily input into decisions you can act on.</p>
         </div>
 
         <div class="cards">
           <article class="card">
+            <img class="step-shot" src="images/8.png" alt="Timeline view of recent captures, including to-dos and ideas" />
             <h3>1) Capture in any format</h3>
-            <p>Voice notes, quick text, photos, and shared links/files all land in one unified inbox with timestamps and location context.</p>
+            <p>Voice notes, quick text, photos, and shared links/files all land in one unified timeline with timestamps and location context.</p>
           </article>
           <article class="card">
+            <img class="step-shot" src="images/2.png" alt="Shopping capture with smart actions linking to Amazon, eBay, Walmart, and a location reminder" />
             <h3>2) Understand automatically</h3>
-            <p>IdeaJar classifies each capture (Idea, To-Do, Event, Email, Shopping, Note), adds summaries, and creates suggested next actions.</p>
+            <p>My IdeaJar classifies each capture (Idea, To-Do, Event, Email, Shopping, Note), adds summaries, and creates suggested next actions.</p>
           </article>
           <article class="card">
+            <img class="step-shot" src="images/7.png" alt="Daily digest grouping captures into to-dos, emails to send, and other action lists" />
             <h3>3) Surface patterns over time</h3>
             <p>Daily digests and semantic theme clustering connect related thoughts across days so you can notice opportunities sooner.</p>
           </article>
@@ -405,6 +429,30 @@
           <p>These are practical capabilities designed to reduce friction between idea capture and execution.</p>
         </div>
 
+        <div class="split">
+          <img src="images/6.png" alt="Themes screen showing synthesized key ideas grouped from recent captures" />
+          <div>
+            <h3>Theme incubation engine</h3>
+            <p>Related captures are grouped by semantic similarity and grown into evolving themes. Choose a window — today, 7 days, 30 days, or a year — and let My IdeaJar synthesize the key ideas hiding in your jar.</p>
+          </div>
+        </div>
+
+        <div class="split reverse">
+          <div>
+            <h3>Re-incubate into a concrete brief</h3>
+            <p>Turn a theme into a short, medium, or long synthesis. My IdeaJar pulls the underlying captures into a structured brief — what it is, the core insight, and how to make it real — so an early idea can become an actionable plan.</p>
+          </div>
+          <img src="images/4.png" alt="Theme detail view showing a re-incubated AR-Powered Conference Sponsorship Campaign brief" />
+        </div>
+
+        <div class="split">
+          <img src="images/5.png" alt="Theme detail view showing an Idea Readiness score across clarity, feasibility, originality, actionability, and evidence" />
+          <div>
+            <h3>Idea Readiness scoring</h3>
+            <p>Every theme gets an Idea Readiness score across clarity, feasibility, originality, actionability, and evidence — so you can see at a glance which ideas are ready to act on and which still need more thought.</p>
+          </div>
+        </div>
+
         <div class="feature-grid">
           <article class="card">
             <h3>On-device first architecture</h3>
@@ -415,12 +463,8 @@
             <p>Convert captures into reminders, calendar entries, map routes, phone/message actions, clipboard content, and research prompts.</p>
           </article>
           <article class="card">
-            <h3>Theme incubation engine</h3>
-            <p>Related captures are grouped by semantic similarity and grown into evolving themes with deeper synthesis on demand.</p>
-          </article>
-          <article class="card">
             <h3>Digest for decision velocity</h3>
-            <p>Generate concise daily overviews to review what mattered, what is emerging, and what you should act on next.</p>
+            <p>Generate concise daily and weekly overviews to review what mattered, what is emerging, and what you should act on next.</p>
           </article>
           <article class="card">
             <h3>Location-aware resurfacing</h3>
@@ -429,6 +473,38 @@
           <article class="card">
             <h3>Flexible AI provider routing</h3>
             <p>Support for Claude and OpenAI with configurable model priorities per task type and graceful fallback behavior.</p>
+          </article>
+          <article class="card">
+            <h3>Private by default</h3>
+            <p>Raw audio never leaves your device. Captures live in your private iCloud account — see the <a href="privacy/">privacy policy</a> for full details.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="screens" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">A look inside</span>
+          <h2>Designed for the moment between the thought and the action</h2>
+          <p>Every screen in My IdeaJar is built to shorten the path from a half-formed idea to something you can use.</p>
+        </div>
+
+        <div class="showcase">
+          <article class="showcase-item">
+            <img src="images/1.png" alt="Daily digest grouping the day's captures into review-focused themes" />
+            <h3>Review-focused digests</h3>
+            <p>A morning glance at what to handle today — to-dos, emails to send, and the captures behind them.</p>
+          </article>
+          <article class="showcase-item">
+            <img src="images/3.png" alt="Daily digest with team, draft, and email captures" />
+            <h3>Daily and weekly narratives</h3>
+            <p>Switch between a daily checklist and a weekly narrative that reads back the story your captures tell.</p>
+          </article>
+          <article class="showcase-item">
+            <img src="images/2.png" alt="Shopping capture with action shortcuts to Amazon, eBay, Walmart, and a location reminder" />
+            <h3>Smart actions on every capture</h3>
+            <p>Shop the item, snooze it, share it, reclassify it, or attach a location reminder — all from the capture itself.</p>
           </article>
         </div>
       </div>
@@ -439,7 +515,7 @@
         <div class="section-head">
           <span class="pill">Who it is for</span>
           <h2>Built for high-context thinkers</h2>
-          <p>If your best ideas happen between meetings, commutes, workouts, or deep work sessions, IdeaJar is built for that reality.</p>
+          <p>If your best ideas happen between meetings, commutes, workouts, or deep work sessions, My IdeaJar is built for that reality.</p>
         </div>
 
         <div class="use-cases">
@@ -472,31 +548,35 @@
 
         <div class="faq">
           <details>
-            <summary>Does IdeaJar only work with voice notes?</summary>
+            <summary>Does My IdeaJar only work with voice notes?</summary>
             <p>No. You can capture through voice, text, photos, file attachments, and the iOS Share Extension from other apps.</p>
           </details>
           <details>
-            <summary>Can I use IdeaJar when I'm offline?</summary>
+            <summary>Can I use My IdeaJar when I'm offline?</summary>
             <p>Key flows include local fallback paths (like on-device transcription/classification) plus offline queue behavior for deferred cloud tasks.</p>
           </details>
           <details>
-            <summary>What actions can IdeaJar suggest?</summary>
+            <summary>What actions can My IdeaJar suggest?</summary>
             <p>It can suggest reminders, calendar events, email drafts, map actions, links/calls/messages, clipboard actions, and research prompts.</p>
           </details>
           <details>
+            <summary>How is my data handled?</summary>
+            <p>Raw audio never leaves your device, captures sync through your private iCloud account, and we don't sell or advertise against your data. Read the full <a href="privacy/">privacy policy</a> for specifics.</p>
+          </details>
+          <details>
             <summary>Is this iPhone only?</summary>
-            <p>Yes currently. IdeaJar is built for iPhone on iOS 17 and above.</p>
+            <p>Yes currently. My IdeaJar is built for iPhone on iOS 17 and above.</p>
           </details>
         </div>
 
         <div class="cta" id="download">
           <div>
             <h3 style="margin-bottom:.35rem;">Ready to think without losing your thoughts?</h3>
-            <p>Start with a single capture and let IdeaJar organize the rest.</p>
+            <p>Start with a single capture and let My IdeaJar organize the rest.</p>
           </div>
           <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
             <a class="btn btn-primary" href="#">Download on the App Store</a>
-            <a class="btn btn-secondary" href="mailto:hello@ideajar.app?subject=IdeaJar%20Early%20Access">Request early access</a>
+            <a class="btn btn-secondary" href="mailto:hello@myideajar.app?subject=My%20IdeaJar%20Early%20Access">Request early access</a>
           </div>
         </div>
       </div>
@@ -505,13 +585,11 @@
 
   <footer>
     <div class="container foot">
-      <div>© <span id="year"></span> IdeaJar. Capture now, structure later.</div>
+      <div>© <span id="year"></span> My IdeaJar. Capture now, structure later.</div>
       <div>
-        <a href="#">Privacy</a>
+        <a href="privacy/">Privacy</a>
         <span> · </span>
-        <a href="#">Terms</a>
-        <span> · </span>
-        <a href="mailto:hello@ideajar.app">Support</a>
+        <a href="mailto:hello@myideajar.app">Support</a>
       </div>
     </div>
   </footer>
