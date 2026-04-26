@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IdeaJar — Capture Everything. Organize Nothing.</title>
+  <meta name="description" content="IdeaJar turns voice notes, photos, text, and shared links into structured insights, daily digests, and suggested actions — automatically." />
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-soft: #101828;
+      --surface: #141f33;
+      --surface-2: #1b2940;
+      --line: #253453;
+      --text: #edf2ff;
+      --muted: #a0b0d6;
+      --accent: #6d8cff;
+      --accent-2: #9f7aea;
+      --good: #35d399;
+      --warn: #fbbf24;
+      --radius: 16px;
+      --shadow: 0 20px 70px rgba(0, 0, 0, .35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(109, 140, 255, .18), transparent 60%),
+        linear-gradient(180deg, #0b0f1a, #0b1220);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container { width: min(1140px, calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: 88px 0; }
+    h1, h2, h3 { line-height: 1.2; margin: 0; letter-spacing: -.02em; }
+    h1 { font-size: clamp(2.1rem, 5.6vw, 4rem); }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.7rem); }
+    p { margin: 0; color: var(--muted); }
+    a { color: inherit; text-decoration: none; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .4rem .85rem;
+      background: rgba(16, 24, 40, .75);
+      color: #c7d6ff;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      border-radius: 12px;
+      padding: .9rem 1.25rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      box-shadow: 0 10px 35px rgba(109, 140, 255, .35);
+    }
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(20, 31, 51, .75);
+      color: #d7e3ff;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(37, 52, 83, .6);
+      background: rgba(11, 15, 26, .7);
+    }
+    .nav-wrap {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 800;
+      letter-spacing: -.02em;
+      font-size: 1.15rem;
+      background: linear-gradient(135deg, #b5c7ff, #d2c3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      color: #bdd0ff;
+      font-size: .92rem;
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+    }
+    .hero-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.2fr .95fr;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: .9rem 0 1rem;
+      max-width: 16ch;
+    }
+    .hero .sub {
+      max-width: 58ch;
+      font-size: 1.07rem;
+    }
+    .hero-cta {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+    .hero-proof {
+      margin-top: 1rem;
+      font-size: .86rem;
+      color: #b8c7ea;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.1rem;
+      background: linear-gradient(180deg, rgba(20, 31, 51, .9), rgba(16, 24, 40, .78));
+      box-shadow: var(--shadow);
+    }
+    .capture {
+      border: 1px solid rgba(58, 80, 120, .65);
+      border-radius: 12px;
+      padding: .8rem;
+      margin-bottom: .65rem;
+      background: rgba(12, 19, 33, .7);
+    }
+    .capture b { color: #dde7ff; }
+    .tag {
+      display: inline-block;
+      margin-top: .45rem;
+      font-size: .72rem;
+      padding: .18rem .45rem;
+      border-radius: 6px;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+    .todo { background: rgba(53, 211, 153, .18); color: #8ef3ca; }
+    .idea { background: rgba(251, 191, 36, .18); color: #fcd97d; }
+    .theme { background: rgba(109, 140, 255, .2); color: #bfd0ff; }
+
+    .quick-stats {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .75rem;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: .9rem;
+      background: rgba(16, 24, 40, .65);
+      text-align: center;
+    }
+    .stat strong { display: block; font-size: 1.35rem; color: #dbe6ff; }
+    .stat span { font-size: .78rem; color: #9ab0dc; }
+
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(12, 20, 34, .65);
+      padding: 16px 0;
+    }
+    .band-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem 1.8rem;
+      color: #b6c7ec;
+      font-size: .9rem;
+      justify-content: center;
+    }
+
+    .section-head { margin-bottom: 1rem; }
+    .section-head p { margin-top: .75rem; max-width: 68ch; }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1.5rem;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      background: rgba(18, 28, 45, .8);
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: .4rem; }
+    .card p { font-size: .93rem; }
+
+    .use-cases {
+      display: grid;
+      gap: .9rem;
+      margin-top: 1.3rem;
+    }
+    .use-case {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem;
+      background: rgba(14, 22, 37, .85);
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+    .use-case .who {
+      font-weight: 700;
+      color: #d4e1ff;
+      font-size: .95rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .faq {
+      margin-top: 1rem;
+      display: grid;
+      gap: .75rem;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: .8rem .95rem;
+      background: rgba(15, 24, 40, .72);
+    }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 700;
+      color: #dce6ff;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin-top: .5rem; font-size: .92rem; }
+
+    .cta {
+      margin-top: 1.7rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.2rem;
+      background: linear-gradient(140deg, rgba(109, 140, 255, .16), rgba(16, 24, 40, .9));
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      border-top: 1px solid var(--line);
+      color: #99acd8;
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .86rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .quick-stats { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .use-case { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-wrap">
+      <a href="#top" class="logo">IdeaJar</a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn btn-secondary" href="#download">Get the app</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">iPhone app · iOS 17+ · AI-assisted capture</span>
+          <h1>Capture every thought.<br />Turn it into action.</h1>
+          <p class="sub">
+            IdeaJar is an AI-first thought companion for people who think quickly and capture messily.
+            Speak, type, snap, or share from other apps — then let IdeaJar classify, summarize,
+            cluster themes, and suggest your next move.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#download">Download on the App Store</a>
+            <a class="btn btn-secondary" href="#how">See product flow</a>
+          </div>
+          <p class="hero-proof">No folders to manage. No tagging required. Built for rapid capture.</p>
+        </div>
+
+        <aside class="panel" aria-label="IdeaJar product preview">
+          <div class="capture">
+            <b>🎙 Voice capture</b>
+            <p>"Email the design team about location-triggered onboarding reminders."</p>
+            <span class="tag todo">Classified: Email / To-Do</span>
+          </div>
+          <div class="capture">
+            <b>📷 Photo capture</b>
+            <p>Whiteboard sketch imported and summarized into roadmap notes.</p>
+            <span class="tag idea">Classified: Idea</span>
+          </div>
+          <div class="capture">
+            <b>🌱 Theme incubator</b>
+            <p>"Context-aware productivity" now combines 8 related captures.</p>
+            <span class="tag theme">Emerging theme</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="container quick-stats" role="list" aria-label="Key product stats">
+        <div class="stat" role="listitem"><strong>6+</strong><span>capture categories</span></div>
+        <div class="stat" role="listitem"><strong>7</strong><span>suggested action types</span></div>
+        <div class="stat" role="listitem"><strong>On-device</strong><span>voice + classification fallbacks</span></div>
+        <div class="stat" role="listitem"><strong>0</strong><span>manual tags required</span></div>
+      </div>
+    </section>
+
+    <section class="band" aria-label="Platform integrations">
+      <div class="container band-wrap">
+        <span>Works with Reminders &amp; Calendar</span>
+        <span>•</span>
+        <span>Draft emails in one tap</span>
+        <span>•</span>
+        <span>Map-aware suggestions</span>
+        <span>•</span>
+        <span>Share Extension for Safari / Messages</span>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">How it works</span>
+          <h2>From scattered captures to structured thinking</h2>
+          <p>IdeaJar is designed around one job: convert messy daily input into decisions you can act on.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>1) Capture in any format</h3>
+            <p>Voice notes, quick text, photos, and shared links/files all land in one unified inbox with timestamps and location context.</p>
+          </article>
+          <article class="card">
+            <h3>2) Understand automatically</h3>
+            <p>IdeaJar classifies each capture (Idea, To-Do, Event, Email, Shopping, Note), adds summaries, and creates suggested next actions.</p>
+          </article>
+          <article class="card">
+            <h3>3) Surface patterns over time</h3>
+            <p>Daily digests and semantic theme clustering connect related thoughts across days so you can notice opportunities sooner.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Feature highlights</span>
+          <h2>A landing page promise backed by real product depth</h2>
+          <p>These are practical capabilities designed to reduce friction between idea capture and execution.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <h3>On-device first architecture</h3>
+            <p>Voice transcription and local classification paths let core flows continue even when you are offline or on unstable networks.</p>
+          </article>
+          <article class="card">
+            <h3>Smart action layer</h3>
+            <p>Convert captures into reminders, calendar entries, map routes, phone/message actions, clipboard content, and research prompts.</p>
+          </article>
+          <article class="card">
+            <h3>Theme incubation engine</h3>
+            <p>Related captures are grouped by semantic similarity and grown into evolving themes with deeper synthesis on demand.</p>
+          </article>
+          <article class="card">
+            <h3>Digest for decision velocity</h3>
+            <p>Generate concise daily overviews to review what mattered, what is emerging, and what you should act on next.</p>
+          </article>
+          <article class="card">
+            <h3>Location-aware resurfacing</h3>
+            <p>Geofence triggers can surface contextually relevant captures when you reach places linked to specific tasks or ideas.</p>
+          </article>
+          <article class="card">
+            <h3>Flexible AI provider routing</h3>
+            <p>Support for Claude and OpenAI with configurable model priorities per task type and graceful fallback behavior.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="use-cases" style="padding-top: 10px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Who it is for</span>
+          <h2>Built for high-context thinkers</h2>
+          <p>If your best ideas happen between meetings, commutes, workouts, or deep work sessions, IdeaJar is built for that reality.</p>
+        </div>
+
+        <div class="use-cases">
+          <article class="use-case">
+            <div class="who">Founders &amp; operators</div>
+            <p>Capture product, hiring, customer, and strategy notes in real time — then review actionable digests before planning sessions.</p>
+          </article>
+          <article class="use-case">
+            <div class="who">Designers &amp; product teams</div>
+            <p>Collect photo references, verbal feedback, and rough thoughts into clustered themes to guide roadmap and UX iteration.</p>
+          </article>
+          <article class="use-case">
+            <div class="who">Researchers &amp; writers</div>
+            <p>Continuously collect fragments and sources from across apps, then use thematic synthesis to shape briefs and long-form writing.</p>
+          </article>
+          <article class="use-case">
+            <div class="who">Busy professionals</div>
+            <p>Keep moving while capturing commitments and ideas, with reminders, drafts, and map-aware prompts generated automatically.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="padding-top: 24px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">FAQ</span>
+          <h2>Common questions before downloading</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Does IdeaJar only work with voice notes?</summary>
+            <p>No. You can capture through voice, text, photos, file attachments, and the iOS Share Extension from other apps.</p>
+          </details>
+          <details>
+            <summary>Can I use IdeaJar when I'm offline?</summary>
+            <p>Key flows include local fallback paths (like on-device transcription/classification) plus offline queue behavior for deferred cloud tasks.</p>
+          </details>
+          <details>
+            <summary>What actions can IdeaJar suggest?</summary>
+            <p>It can suggest reminders, calendar events, email drafts, map actions, links/calls/messages, clipboard actions, and research prompts.</p>
+          </details>
+          <details>
+            <summary>Is this iPhone only?</summary>
+            <p>Yes currently. IdeaJar is built for iPhone on iOS 17 and above.</p>
+          </details>
+        </div>
+
+        <div class="cta" id="download">
+          <div>
+            <h3 style="margin-bottom:.35rem;">Ready to think without losing your thoughts?</h3>
+            <p>Start with a single capture and let IdeaJar organize the rest.</p>
+          </div>
+          <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="#">Download on the App Store</a>
+            <a class="btn btn-secondary" href="mailto:hello@ideajar.app?subject=IdeaJar%20Early%20Access">Request early access</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> IdeaJar. Capture now, structure later.</div>
+      <div>
+        <a href="#">Privacy</a>
+        <span> · </span>
+        <a href="#">Terms</a>
+        <span> · </span>
+        <a href="mailto:hello@ideajar.app">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
